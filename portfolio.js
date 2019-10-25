@@ -16,20 +16,25 @@ document.addEventListener("DOMContentLoaded", function () {
 	const ballSizeMin = 10;
 	const ballAmount = 20;
     const canvasMin = 0;
-	const ballArr = []
+	const ballArr = [];
+	let currentMousePos = {
+		mouseX : 0,
+		mouseY: 0,
+	};
 
 	function canvasChecker() {
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
 	};
 	function logMovement(event){
-		console.log(event.clientX, event.clientY)
+		currentMousePos ={
+			mouseX : event.clientX,
+			mouseY : event.clientY,
+		}
 	}
+	
 	window.addEventListener('resize', canvasChecker);
 	window.addEventListener('mousemove', logMovement)
-
-	console.log(MouseEvent.clientX)
-
 
 	function drawBackground() {
 		context.fillStyle = 'black'
@@ -68,27 +73,30 @@ document.addEventListener("DOMContentLoaded", function () {
 			ballObject.ballYVel = -ballObject.ballYVel
 		};
 		//ball vs mouse
-
-
+		if(ballObject.ballX + ballObject.ballSize == currentMousePos.mouseX){
+			ballObject.ballXVel = -ballObject.ballXVel
+		};
+		if(ballObject.ballY + ballObject.ballSize == currentMousePos.mouseY){
+			ballObject.ballYVel = -ballObject.ballYVel
+		};
+		
 		//ball velocity
 		ballObject.ballX += ballObject.ballXVel
 		ballObject.ballY += ballObject.ballYVel	
-
-	
 	}
 
 	function drawMaster() {
 		drawBackground()
-
 		for (i = 0; i < ballArr.length; i++) {
 			drawBall(ballArr[i])
 		}
 
 	};
 
-
 	setInterval(() => {
-		drawMaster();
-	}, drawInterval);
+		console.log('mouseposX:' + currentMousePos.mouseX)
+		console.log('mouseposY:' + currentMousePos.mouseY)
+		drawMaster();	
+	}, drawInterval);	
 
 });

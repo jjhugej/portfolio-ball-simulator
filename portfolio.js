@@ -75,9 +75,12 @@ document.addEventListener("DOMContentLoaded", function () {
 		//ball vs mouse
 		if(ballObject.ballX + ballObject.ballSize == currentMousePos.mouseX){
 			ballObject.ballXVel = -ballObject.ballXVel
+			ballObject.ballYVel = -ballObject.ballYVel
+
 		};
 		if(ballObject.ballY + ballObject.ballSize == currentMousePos.mouseY){
 			ballObject.ballYVel = -ballObject.ballYVel
+			ballObject.ballXVel = -ballObject.ballXVel
 		};
 		
 		//ball velocity

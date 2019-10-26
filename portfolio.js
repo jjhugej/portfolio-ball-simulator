@@ -71,6 +71,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		}
 	}
+	
+	function ballCollision(ballObject){
+		for (i=0; i<ballArr.length;i++){
+			if(ballArr[i] != ballObject){
+				if(Math.sqrt( (ballObject.ballX - ballArr[i].ballX)*(ballObject.ballX - ballArr[i].ballX) +(ballObject.ballY - ballArr[i].ballY)*(ballObject.ballY - ballArr[i].ballY)) < (ballObject.ballSize +ballArr[i.ballSize])){
+					ballObject.ballXVel = - ballObject.ballXVel
+					ballObject.ballYVel = - ballObject.ballYVel
+				}
+			}
+			
+		}
+		
+	}
+	
 
 	function drawBall(ballObject) {
 		//draw the ball
@@ -86,6 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			ballObject.ballYVel = -ballObject.ballYVel
 		};
 		mouseCollision(ballObject);
+		ballCollision(ballObject);
 
 		//ball velocity
 		ballObject.ballX += ballObject.ballXVel
@@ -110,4 +125,3 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-/

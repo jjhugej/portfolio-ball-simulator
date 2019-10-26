@@ -57,21 +57,24 @@ document.addEventListener("DOMContentLoaded", function () {
 	while (ballArr.length < ballAmount) {
 		ballArr.push(makeBall())
 	}
-	console.log(ballArr)
 
-	function setBallCollision(ballObject){
-		ballObject.ballCollision = true;
-	}
-
-	function ballCollision(ballObject){
-		if(Math.sqrt((ballObject.ballX - currentMousePos.mouseX)*(ballObject.ballX - currentMousePos.mouseX) + (ballObject.ballY - currentMousePos.mouseY)*(ballObject.ballY - currentMousePos.mouseY)) < (ballObject.ballSize + 10)&& ballObject.ballCollision == false){
-			console.log('ball collision!')
-			setTimeout(setBallCollision, 2000)			
-			ballObject.ballXVel = -ballObject.ballXVel
-			ballObject.ballYVel = -ballObject.ballYVel
+	function mouseCollision(ballObject){
+		if(Math.sqrt((ballObject.ballX - currentMousePos.mouseX)*(ballObject.ballX - currentMousePos.mouseX) + (ballObject.ballY - currentMousePos.mouseY)*(ballObject.ballY - currentMousePos.mouseY)) < (ballObject.ballSize + 10)){
+			if (ballObject.ballCollision == false){
+				ballObject.ballCollision = true;
+				ballObject.ballXVel = -ballObject.ballXVel;
+				ballObject.ballYVel = -ballObject.ballYVel;
+			}
+			}else{
+				ballObject.ballCollision = false;
+			
 		}
 	}
-	
+	/*
+	function ballCollision(ballObject){
+		if(Math.sqrt(ballObject.ballX - ))
+	}
+	*/
 
 	function drawBall(ballObject) {
 		//draw the ball
@@ -86,19 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		if (ballObject.ballY + ballObject.ballSize > canvas.height || ballObject.ballY - ballObject.ballSize < 0) {
 			ballObject.ballYVel = -ballObject.ballYVel
 		};
-		//ball vs mouse
-		/*
-		if(ballObject.ballX + ballObject.ballSize == currentMousePos.mouseX){
-			ballObject.ballXVel = -ballObject.ballXVel
-			ballObject.ballYVel = -ballObject.ballYVel
-
-		};
-		if(ballObject.ballY + ballObject.ballSize == currentMousePos.mouseY){
-			ballObject.ballYVel = -ballObject.ballYVel
-			ballObject.ballXVel = -ballObject.ballXVel
-		};*/
-		setBallCollision(ballObject);
-		ballCollision(ballObject);
+		mouseCollision(ballObject);
 
 		//ball velocity
 		ballObject.ballX += ballObject.ballXVel

@@ -8,9 +8,9 @@ document.addEventListener("DOMContentLoaded", function () {
 	let canvasHeight=canvas.height = window.innerHeight;
 	let fps = 60;
 	let drawInterval = 1000 / fps;
-	const xVelMax = 5;
+	const xVelMax = 2;
 	const xVelMin = 1;
-	const yVelMax = 5;
+	const yVelMax = 2;
 	const yVelMin = 1;
 	const ballSizeMax = 20;
 	const ballSizeMin = 10;

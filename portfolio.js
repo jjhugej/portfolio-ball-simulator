@@ -1,11 +1,11 @@
-// please check https://xkcd.com/323/ this project was made like this
+// please check https://xkcd.com/323/ for the luls
 
 document.addEventListener("DOMContentLoaded", function () {
 
 	let canvas = document.getElementById('canvasele');
 	let context = canvas.getContext('2d');
-	let canvasWidth=canvas.width = window.innerWidth;
-	let canvasHeight=canvas.height = window.innerHeight;
+	let canvasWidth = canvas.width = window.innerWidth;
+	let canvasHeight = canvas.height = window.innerHeight;
 	let fps = 60;
 	let drawInterval = 1000 / fps;
 	const xVelMax = 2;
@@ -14,11 +14,11 @@ document.addEventListener("DOMContentLoaded", function () {
 	const yVelMin = 1;
 	const ballSizeMax = 20;
 	const ballSizeMin = 10;
-	const ballAmount = 20;
-    const canvasMin = 0;
+	const ballAmount = 50;
+	const canvasMin = 0;
 	const ballArr = [];
 	let currentMousePos = {
-		mouseX : 0,
+		mouseX: 0,
 		mouseY: 0,
 	};
 
@@ -26,13 +26,14 @@ document.addEventListener("DOMContentLoaded", function () {
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
 	};
-	function logMovement(event){
-		currentMousePos ={
-			mouseX : event.clientX,
-			mouseY : event.clientY,
+
+	function logMovement(event) {
+		currentMousePos = {
+			mouseX: event.clientX,
+			mouseY: event.clientY,
 		}
 	}
-	
+
 	window.addEventListener('resize', canvasChecker);
 	window.addEventListener('mousemove', logMovement)
 
@@ -49,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			ballXVel: Math.floor(Math.random() * Math.floor(xVelMax - xVelMin) + xVelMin),
 			ballYVel: Math.floor(Math.random() * Math.floor(yVelMax - yVelMin) + yVelMin),
 			ballSize: Math.floor(Math.random() * Math.floor(ballSizeMax - ballSizeMin) + ballSizeMin),
-			ballCollision : false,
+			ballCollision: false,
 		}
 		return myBall
 	}
@@ -58,23 +59,18 @@ document.addEventListener("DOMContentLoaded", function () {
 		ballArr.push(makeBall())
 	}
 
-	function mouseCollision(ballObject){
-		if(Math.sqrt((ballObject.ballX - currentMousePos.mouseX)*(ballObject.ballX - currentMousePos.mouseX) + (ballObject.ballY - currentMousePos.mouseY)*(ballObject.ballY - currentMousePos.mouseY)) < (ballObject.ballSize + 10)){
-			if (ballObject.ballCollision == false){
+	function mouseCollision(ballObject) {
+		if (Math.sqrt((ballObject.ballX - currentMousePos.mouseX) * (ballObject.ballX - currentMousePos.mouseX) + (ballObject.ballY - currentMousePos.mouseY) * (ballObject.ballY - currentMousePos.mouseY)) < (ballObject.ballSize + 10)) {
+			if (ballObject.ballCollision == false) {
 				ballObject.ballCollision = true;
 				ballObject.ballXVel = -ballObject.ballXVel;
 				ballObject.ballYVel = -ballObject.ballYVel;
 			}
-			}else{
-				ballObject.ballCollision = false;
-			
+		} else {
+			ballObject.ballCollision = false;
+
 		}
 	}
-	/*
-	function ballCollision(ballObject){
-		if(Math.sqrt(ballObject.ballX - ))
-	}
-	*/
 
 	function drawBall(ballObject) {
 		//draw the ball
@@ -93,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		//ball velocity
 		ballObject.ballX += ballObject.ballXVel
-		ballObject.ballY += ballObject.ballYVel	
+		ballObject.ballY += ballObject.ballYVel
 
 	}
 
@@ -108,11 +104,10 @@ document.addEventListener("DOMContentLoaded", function () {
 	setInterval(() => {
 		//console.log('mouseposX:' + currentMousePos.mouseX)
 		//console.log('mouseposY:' + currentMousePos.mouseY)
-		drawMaster();	
-	}, drawInterval);	
+		drawMaster();
+	}, drawInterval);
 
 });
 
 
-
-//if (Math.sqrt( (ballObject.ballX - currentMousePos.mouseX)*(ballObject.ballX - currentMousePos.mouseX) + (ballObject.ballY - currentMousePos.mouseY) * (ballObject.ballY - currentMousePos.mouseY) )
+/

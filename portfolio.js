@@ -49,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			ballXVel: Math.floor(Math.random() * Math.floor(xVelMax - xVelMin) + xVelMin),
 			ballYVel: Math.floor(Math.random() * Math.floor(yVelMax - yVelMin) + yVelMin),
 			ballSize: Math.floor(Math.random() * Math.floor(ballSizeMax - ballSizeMin) + ballSizeMin),
+			ballCollision : false,
 		}
 		return myBall
 	}
@@ -58,6 +59,19 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 	console.log(ballArr)
 
+	function setBallCollision(ballObject){
+		ballObject.ballCollision = true;
+	}
+
+	function ballCollision(ballObject){
+		if(Math.sqrt((ballObject.ballX - currentMousePos.mouseX)*(ballObject.ballX - currentMousePos.mouseX) + (ballObject.ballY - currentMousePos.mouseY)*(ballObject.ballY - currentMousePos.mouseY)) < (ballObject.ballSize + 10)&& ballObject.ballCollision == false){
+			console.log('ball collision!')
+			setTimeout(setBallCollision, 2000)			
+			ballObject.ballXVel = -ballObject.ballXVel
+			ballObject.ballYVel = -ballObject.ballYVel
+		}
+	}
+	
 
 	function drawBall(ballObject) {
 		//draw the ball
@@ -73,6 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			ballObject.ballYVel = -ballObject.ballYVel
 		};
 		//ball vs mouse
+		/*
 		if(ballObject.ballX + ballObject.ballSize == currentMousePos.mouseX){
 			ballObject.ballXVel = -ballObject.ballXVel
 			ballObject.ballYVel = -ballObject.ballYVel
@@ -81,11 +96,14 @@ document.addEventListener("DOMContentLoaded", function () {
 		if(ballObject.ballY + ballObject.ballSize == currentMousePos.mouseY){
 			ballObject.ballYVel = -ballObject.ballYVel
 			ballObject.ballXVel = -ballObject.ballXVel
-		};
-		
+		};*/
+		setBallCollision(ballObject);
+		ballCollision(ballObject);
+
 		//ball velocity
 		ballObject.ballX += ballObject.ballXVel
 		ballObject.ballY += ballObject.ballYVel	
+
 	}
 
 	function drawMaster() {
@@ -97,9 +115,13 @@ document.addEventListener("DOMContentLoaded", function () {
 	};
 
 	setInterval(() => {
-		console.log('mouseposX:' + currentMousePos.mouseX)
-		console.log('mouseposY:' + currentMousePos.mouseY)
+		//console.log('mouseposX:' + currentMousePos.mouseX)
+		//console.log('mouseposY:' + currentMousePos.mouseY)
 		drawMaster();	
 	}, drawInterval);	
 
 });
+
+
+
+//if (Math.sqrt( (ballObject.ballX - currentMousePos.mouseX)*(ballObject.ballX - currentMousePos.mouseX) + (ballObject.ballY - currentMousePos.mouseY) * (ballObject.ballY - currentMousePos.mouseY) )

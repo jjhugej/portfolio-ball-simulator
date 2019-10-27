@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			ballXVel: Math.floor(Math.random() * Math.floor(xVelMax - xVelMin) + xVelMin),
 			ballYVel: Math.floor(Math.random() * Math.floor(yVelMax - yVelMin) + yVelMin),
 			ballSize: Math.floor(Math.random() * Math.floor(ballSizeMax - ballSizeMin) + ballSizeMin),
-			ballCollision: false,
+			mouseCollision: false,
 		}
 		return myBall
 	}
@@ -61,23 +61,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	function mouseCollision(ballObject) {
 		if (Math.sqrt((ballObject.ballX - currentMousePos.mouseX) * (ballObject.ballX - currentMousePos.mouseX) + (ballObject.ballY - currentMousePos.mouseY) * (ballObject.ballY - currentMousePos.mouseY)) < (ballObject.ballSize + 10)) {
-			if (ballObject.ballCollision == false) {
-				ballObject.ballCollision = true;
+			if (ballObject.mouseCollision == false) {
+				ballObject.mouseCollision = true;
 				ballObject.ballXVel = -ballObject.ballXVel;
 				ballObject.ballYVel = -ballObject.ballYVel;
 			}
 		} else {
-			ballObject.ballCollision = false;
+			ballObject.mouseCollision = false;
 
 		}
 	}
 	
+	
 	function ballCollision(ballObject){
-		for (i=0; i<ballArr.length;i++){
+		for (let i=0; i<ballArr.length;i++){
 			if(ballArr[i] != ballObject){
-				if(Math.sqrt( (ballObject.ballX - ballArr[i].ballX)*(ballObject.ballX - ballArr[i].ballX) +(ballObject.ballY - ballArr[i].ballY)*(ballObject.ballY - ballArr[i].ballY)) < (ballObject.ballSize +ballArr[i.ballSize])){
+				if(Math.sqrt( (ballObject.ballX - ballArr[i].ballX)*(ballObject.ballX - ballArr[i].ballX) +(ballObject.ballY - ballArr[i].ballY)*(ballObject.ballY - ballArr[i].ballY)) < (ballObject.ballSize + ballArr[i].ballSize)){
 					ballObject.ballXVel = - ballObject.ballXVel
 					ballObject.ballYVel = - ballObject.ballYVel
+					ballArr[i].ballXVel = -ballArr[i].ballXVel
+					ballArr[i].ballYVel = -ballArr[i].ballYVel
 				}
 			}
 			
@@ -110,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	function drawMaster() {
 		drawBackground()
-		for (i = 0; i < ballArr.length; i++) {
+		for (let i = 0; i < ballArr.length; i++) {
 			drawBall(ballArr[i])
 		}
 

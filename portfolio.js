@@ -51,6 +51,8 @@ document.addEventListener("DOMContentLoaded", function () {
 			ballYVel: Math.floor(Math.random() * Math.floor(yVelMax - yVelMin) + yVelMin),
 			ballSize: Math.floor(Math.random() * Math.floor(ballSizeMax - ballSizeMin) + ballSizeMin),
 			mouseCollision: false,
+			ballCollision: false,
+			ballCollisionArray : [],
 		}
 		return myBall
 	}
@@ -72,20 +74,24 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 	}
 	
+	// ballCollisionArray
 	
 	function ballCollision(ballObject){
 		for (let i=0; i<ballArr.length;i++){
 			if(ballArr[i] != ballObject){
 				if(Math.sqrt( (ballObject.ballX - ballArr[i].ballX)*(ballObject.ballX - ballArr[i].ballX) +(ballObject.ballY - ballArr[i].ballY)*(ballObject.ballY - ballArr[i].ballY)) < (ballObject.ballSize + ballArr[i].ballSize)){
-					ballObject.ballXVel = - ballObject.ballXVel
-					ballObject.ballYVel = - ballObject.ballYVel
-					ballArr[i].ballXVel = -ballArr[i].ballXVel
-					ballArr[i].ballYVel = -ballArr[i].ballYVel
+					if(ballObject.ballCollisionArray.includes(ballArr[i])!= true && ballArr[i].ballCollisionArray.includes(ballObject)!=true){
+						ballObject.ballCollisionArray.push(ballArr[i])
+						ballArr[i].ballCollisionArray.push(ballObject)
+						console.log(ballObject.ballCollisionArray, ballArr[i].ballCollisionArray)
+						ballObject.ballXVel = -ballObject.ballXVel
+						ballObject.ballYVel = -ballObject.ballYVel
+						ballArr[i].ballXVel = -ballArr[i].ballXVel
+						ballArr[i].ballYVel = -ballArr[i].ballYVel	
+					}					
 				}
 			}
-			
 		}
-		
 	}
 	
 

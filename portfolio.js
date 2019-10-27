@@ -8,13 +8,13 @@ document.addEventListener("DOMContentLoaded", function () {
 	let canvasHeight = canvas.height = window.innerHeight;
 	let fps = 60;
 	let drawInterval = 1000 / fps;
-	const xVelMax = 2;
+	const xVelMax = 3;
 	const xVelMin = 1;
-	const yVelMax = 2;
+	const yVelMax = 3;
 	const yVelMin = 1;
-	const ballSizeMax = 20;
-	const ballSizeMin = 10;
-	const ballAmount = 50;
+	const ballSizeMax = 50;
+	const ballSizeMin = 50;
+	const ballAmount = 2;
 	const canvasMin = 0;
 	const ballArr = [];
 	let currentMousePos = {
@@ -45,14 +45,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	function makeBall() {
 		let myBall = {
-			ballX: Math.floor(Math.random() * Math.floor(canvasWidth - canvasMin) + canvasMin),
-			ballY: Math.floor(Math.random() * Math.floor(canvasHeight - canvasMin) + canvasMin),
+			ballX: Math.floor(Math.random() * Math.floor((canvasWidth - ballSizeMax) - (canvasMin + ballSizeMax)) + (canvasMin + ballSizeMax)),
+			ballY: Math.floor(Math.random() * Math.floor((canvasHeight - ballSizeMax) - (canvasMin + ballSizeMax)) + (canvasMin + ballSizeMax)),
 			ballXVel: Math.floor(Math.random() * Math.floor(xVelMax - xVelMin) + xVelMin),
 			ballYVel: Math.floor(Math.random() * Math.floor(yVelMax - yVelMin) + yVelMin),
 			ballSize: Math.floor(Math.random() * Math.floor(ballSizeMax - ballSizeMin) + ballSizeMin),
 			mouseCollision: false,
-			ballCollision: false,
-			ballCollisionArray : [],
+			ballCollisionArray: [],
 		}
 		return myBall
 	}
@@ -73,27 +72,41 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		}
 	}
-	
+
 	// ballCollisionArray
-	
-	function ballCollision(ballObject){
-		for (let i=0; i<ballArr.length;i++){
-			if(ballArr[i] != ballObject){
-				if(Math.sqrt( (ballObject.ballX - ballArr[i].ballX)*(ballObject.ballX - ballArr[i].ballX) +(ballObject.ballY - ballArr[i].ballY)*(ballObject.ballY - ballArr[i].ballY)) < (ballObject.ballSize + ballArr[i].ballSize)){
-					if(ballObject.ballCollisionArray.includes(ballArr[i])!= true && ballArr[i].ballCollisionArray.includes(ballObject)!=true){
+
+	function ballCollision(ballObject) {
+		for (let i = 0; i < ballArr.length; i++) {
+			if (ballArr[i] != ballObject) {
+				if (Math.sqrt((ballObject.ballX - ballArr[i].ballX) * (ballObject.ballX - ballArr[i].ballX) + (ballObject.ballY - ballArr[i].ballY) * (ballObject.ballY - ballArr[i].ballY)) < (ballObject.ballSize + ballArr[i].ballSize)) {
+					console.log(ballObject.ballCollisionArray)
+					console.log(ballArr[i].ballCollisionArray)
+					if (ballObject.ballCollisionArray.includes(ballArr[i]) != true && ballArr[i].ballCollisionArray.includes(ballObject) != true) {
 						ballObject.ballCollisionArray.push(ballArr[i])
 						ballArr[i].ballCollisionArray.push(ballObject)
-						console.log(ballObject.ballCollisionArray, ballArr[i].ballCollisionArray)
 						ballObject.ballXVel = -ballObject.ballXVel
 						ballObject.ballYVel = -ballObject.ballYVel
 						ballArr[i].ballXVel = -ballArr[i].ballXVel
-						ballArr[i].ballYVel = -ballArr[i].ballYVel	
-					}					
+						ballArr[i].ballYVel = -ballArr[i].ballYVel
+					}
+					//shoutout to babagamingofficial for fixing the bug with balls not colliding properly. please refer to github to see previous failures				
+				} else {
+					for (let j = 0; j < ballObject.ballCollisionArray.length; j++) {
+						if (ballObject.ballCollisionArray[j] == ballArr[i]) {
+							ballObject.ballCollisionArray.splice(j - 1, 1);
+						}
+					}
+
+					for (let j = 0; j < ballArr[i].ballCollisionArray.length; j++) {
+						if (ballArr[i].ballCollisionArray[j] == ballObject) {
+							ballArr[j].ballCollisionArray.splice(j - 1, 1);
+						}
+					}
 				}
 			}
 		}
 	}
-	
+
 
 	function drawBall(ballObject) {
 		//draw the ball
@@ -126,8 +139,6 @@ document.addEventListener("DOMContentLoaded", function () {
 	};
 
 	setInterval(() => {
-		//console.log('mouseposX:' + currentMousePos.mouseX)
-		//console.log('mouseposY:' + currentMousePos.mouseY)
 		drawMaster();
 	}, drawInterval);
 

@@ -64,30 +64,48 @@ document.addEventListener("DOMContentLoaded", function () {
 		if (Math.sqrt((ballObject.ballX - currentMousePos.mouseX) * (ballObject.ballX - currentMousePos.mouseX) + (ballObject.ballY - currentMousePos.mouseY) * (ballObject.ballY - currentMousePos.mouseY)) < (ballObject.ballSize + 10)) {
 			if (ballObject.mouseCollision == false) {
 				ballObject.mouseCollision = true;
+
+				// mouse velocity collision changes
 				ballObject.ballXVel = -ballObject.ballXVel;
 				ballObject.ballYVel = -ballObject.ballYVel;
+
+
 			}
 		} else {
 			ballObject.mouseCollision = false;
 
 		}
 	}
-
 	// ballCollisionArray
 
 	function ballCollision(ballObject) {
 		for (let i = 0; i < ballArr.length; i++) {
 			if (ballArr[i] != ballObject) {
 				if (Math.sqrt((ballObject.ballX - ballArr[i].ballX) * (ballObject.ballX - ballArr[i].ballX) + (ballObject.ballY - ballArr[i].ballY) * (ballObject.ballY - ballArr[i].ballY)) < (ballObject.ballSize + ballArr[i].ballSize)) {
-					console.log(ballObject.ballCollisionArray)
-					console.log(ballArr[i].ballCollisionArray)
 					if (ballObject.ballCollisionArray.includes(ballArr[i]) != true && ballArr[i].ballCollisionArray.includes(ballObject) != true) {
 						ballObject.ballCollisionArray.push(ballArr[i])
 						ballArr[i].ballCollisionArray.push(ballObject)
+						
+						ballAXInitialVel = ballObject.ballXVel
+						ballAYInitialVel = ballObject.ballYVel
+						ballBXInitialVel = ballArr[i].ballXVel
+						ballBYInitialVel = ballArr[i].ballYVel
+
+						ballObject.ballXVel = ((ballObject.ballSize - ballArr[i].ballSize)/(ballObject.ballSize + ballArr[i].ballSize))*ballAXInitialVel + ((2*ballArr[i].ballSize)/(ballObject.ballSize + ballArr[i].ballSize))*ballBXInitialVel
+						ballObject.ballYVel = ((ballObject.ballSize - ballArr[i].ballSize)/(ballObject.ballSize + ballArr[i].ballSize))*ballAYInitialVel + ((2*ballArr[i].ballSize)/(ballObject.ballSize + ballArr[i].ballSize))*ballBYInitialVel
+
+						ballArr[i].ballXVel = ((2*ballObject.ballSize)/(ballObject.ballSize)) * ballAXInitialVel + ((ballArr[i].ballSize - ballObject.ballSize)/(ballObject.ballSize+ballArr[i]))* ballBXInitialVel
+						ballArr[i].ballYVel = ((2*ballObject.ballSize)/(ballObject.ballSize)) * ballAYInitialVel + ((ballArr[i].ballSize - ballObject.ballSize)/(ballObject.ballSize+ballArr[i]))* ballBYInitialVel
+
+						console.log(ballArr)
+						//ball collision velocity modifications
+						/* old ball velocity changes:
 						ballObject.ballXVel = -ballObject.ballXVel
 						ballObject.ballYVel = -ballObject.ballYVel
 						ballArr[i].ballXVel = -ballArr[i].ballXVel
 						ballArr[i].ballYVel = -ballArr[i].ballYVel
+						*/
+
 					}
 					//shoutout to babagamingofficial for fixing the bug with balls not colliding properly. please refer to github to see previous failures				
 				} else {

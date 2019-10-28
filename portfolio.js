@@ -12,9 +12,9 @@ document.addEventListener("DOMContentLoaded", function () {
 	const xVelMin = 1;
 	const yVelMax = 3;
 	const yVelMin = 1;
-	const ballSizeMax = 50;
-	const ballSizeMin = 50;
-	const ballAmount = 2;
+	const ballSizeMax = 45;
+	const ballSizeMin = 15;
+	const ballAmount = 20;
 	const canvasMin = 0;
 	const ballArr = [];
 	let currentMousePos = {

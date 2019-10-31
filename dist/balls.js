@@ -1,16 +1,16 @@
 // please check https://xkcd.com/323/ for the luls
 
 document.addEventListener('DOMContentLoaded', function() {
-    //Simulator options below
+    //Simulator options below - some amounts are changed based on screen width see below
     let fps = 60;
     let drawInterval = 1000 / fps;
-    const xVelMax = 4;
+    let xVelMax = 4;
     const xVelMin = 1;
-    const yVelMax = 4;
+    let yVelMax = 4;
     const yVelMin = 1;
-    const ballSizeMax = 30;
-    const ballSizeMin = 10;
-    const ballAmount = 20;
+    let ballSizeMax;
+    let ballSizeMin;
+    let ballAmount;
     //End simulator options
 
     let canvas = document.getElementById('canvasele');
@@ -29,6 +29,28 @@ document.addEventListener('DOMContentLoaded', function() {
         mouseX: 0,
         mouseY: 0,
     };
+    if (canvas.width <= 430) {
+        ballSizeMin = 5;
+        ballSizeMax = 15;
+        ballAmount = 15;
+    } else if (431 >= canvas.width <= 810) {
+        ballSizeMin = 10;
+        ballSizeMax = 35;
+        ballAmount = 25;
+    } else if (811 >= canvas.width <= 1100) {
+        ballSizeMin = 15;
+        ballSizeMax = 40;
+        ballAmount = 35;
+    } else {
+        ballSizeMin = 25;
+        ballSizeMax = 60;
+        ballAmount = 45;
+        xVelMax = 6;
+        yVelMax = 6;
+    }
+    window.addEventListener('resize', canvasChecker);
+    window.addEventListener('mousemove', logMovement);
+    window.addEventListener('scroll', logScroll);
 
     function canvasChecker() {
         canvas.width = window.innerWidth - 1;
@@ -43,10 +65,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function logScroll(event) {
         scrollPos = event.path[1].scrollY;
     }
-
-    window.addEventListener('resize', canvasChecker);
-    window.addEventListener('mousemove', logMovement);
-    window.addEventListener('scroll', logScroll, buttonCollision);
 
     function drawBackground() {
         context.fillStyle = 'black';
@@ -179,12 +197,68 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     function buttonCollision(ballObject) {
+        ballXInitialVel = ballObject.ballXVel;
+        ballYInitialVel = ballObject.ballYVel;
+        //check standard collision to enter additional collision checks
+        if (
+            ballObject.ballX + ballObject.ballSize >= button.left &&
+            ballObject.ballX - ballObject.ballSize <= button.right &&
+            ballObject.ballY + ballObject.ballSize >= button.top + scrollPos - (1 / 2) * button.height - 10 &&
+            ballObject.ballY - ballObject.ballSize <= button.bottom + scrollPos - (1 / 2) * button.height - 10
+        ) {
+            if (ballObject.buttonCollision == false) {
+                //check wall collisions
+                //check left wall
+                // may not need to account for ballsize*******
+                if (
+                    ballObject.ballX + ballObject.ballSize >= button.left &&
+                    ballObject.ballX - ballObject.ballSize <= button.left + 2 &&
+                    ballObject.ballY + ballObject.ballSize >= button.top + scrollPos - (1 / 2) * button.height - 10 &&
+                    ballObject.ballY - ballObject.ballSize <= button.bottom + scrollPos - (1 / 2) * button.height - 10
+                ) {
+                    ballObject.ballXVel = -ballObject.ballXVel;
+                    ballObject.buttonCollision = true;
+                }
+
+                //check top
+                if (
+                    ballObject.ballX + ballObject.ballSize >= button.left &&
+                    ballObject.ballX - ballObject.ballSize <= button.right &&
+                    ballObject.ballY + ballObject.ballSize >= button.top
+                ) {
+                    ballObject.ballYVel = -ballObject.ballYVel;
+                    ballObject.buttonCollision = true;
+                }
+                //check right wall
+                if (
+                    ballObject.ballX - ballObject.ballSize <= button.right &&
+                    ballObject.ballX - ballObject.ballSize <= button.right - 2 &&
+                    ballObject.ballY + ballObject.ballSize >= button.top + scrollPos - (1 / 2) * button.height - 10 &&
+                    ballObject.ballY - ballObject.ballSize <= button.bottom + scrollPos - (1 / 2) * button.height - 10
+                ) {
+                    ballObject.ballXVel = -ballObject.ballXVel;
+                    ballObject.buttonCollision = true;
+                }
+                //check bottom
+                if (
+                    ballObject.ballX + ballObject.ballSize >= button.left &&
+                    ballObject.ballX - ballObject.ballSize <= button.right &&
+                    ballObject.ballY - ballObject.ballSize <= button.bottom
+                ) {
+                    ballObject.ballYVel = -ballObject.ballYVel;
+                    ballObject.buttonCollision = true;
+                }
+            }
+        } else {
+            ballObject.buttonCollision = false;
+        }
+
         /* 
         The following uses the same elastic collision equation as above in the ball vs ball collision. 
         Due to the formula requiring a mass and velocity for both entities (because: physics)--
          the formula does not work as intended here.     
         btnMass and btnVel are required for the formula to work properly, despite the btn having neither. These are theoretical.
-        */
+        
         btnMass = 10000;
         btnVel = 0.001;
         ballXInitialVel = ballObject.ballXVel;
@@ -202,17 +276,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 ballObject.ballYVel =
                     ((ballObject.ballSize - btnMass) / (ballObject.ballSize + btnMass)) * ballYInitialVel +
                     ((2 * btnMass) / (ballObject.ballSize + btnMass)) * btnVel;
-                /* --rudimentary ball vs button collision
-                ballObject.ballXVel = -ballObject.ballXVel;
-                ballObject.ballYVel = -ballObject.ballYVel;
-                */
+                //--rudimentary ball vs button collision
+                //ballObject.ballXVel = -ballObject.ballXVel;
+                //ballObject.ballYVel = -ballObject.ballYVel;
+                
 
                 ballObject.buttonCollision = true;
             }
         } else {
             ballObject.buttonCollision = false;
-        }
+        }*/
     }
+
     function drawBall(ballObject) {
         context.beginPath();
         context.fillStyle = 'white';

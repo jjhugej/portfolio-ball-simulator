@@ -15,8 +15,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let canvas = document.getElementById('canvasele');
     let context = canvas.getContext('2d');
+    let navB = document.getElementById('navwrapper').getBoundingClientRect();
+    let navHeight = navB.height;
+    let extraPad = 20;
     let canvasWidth = (canvas.width = window.innerWidth - 1);
-    let canvasHeight = (canvas.height = window.innerHeight - 1);
+    let canvasHeight = (canvas.height = window.innerHeight - navHeight - extraPad);
     let buttonelement = document.getElementById('startBtn');
     let button = buttonelement.getBoundingClientRect();
     const canvasMin = 0;
@@ -29,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function canvasChecker() {
         canvas.width = window.innerWidth - 1;
-        canvas.height = window.innerHeight - 1;
+        canvas.height = window.innerHeight - navHeight - extraPad;
     }
     function logMovement(event) {
         currentMousePos = {
@@ -178,7 +181,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function buttonCollision(ballObject) {
         /* 
         The following uses the same elastic collision equation as above in the ball vs ball collision. 
-        Due to the formula requiring a mass and velocity for both entities (because physics) the formula does not work as intended here.     
+        Due to the formula requiring a mass and velocity for both entities (because: physics)--
+         the formula does not work as intended here.     
         btnMass and btnVel are required for the formula to work properly, despite the btn having neither. These are theoretical.
         */
         btnMass = 10000;

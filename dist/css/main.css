@@ -16,4 +16,9 @@
   color: white;
   background-color: rgba(0, 0, 0, 0.1);
 }
+
+#startBtn:hover {
+  background-color: rgba(100, 100, 100, 0.8);
+  color: white;
+}
 /*# sourceMappingURL=main.css.map */

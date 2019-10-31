@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+#startBtn {
+  position: absolute;
+  top: 75vh;
+  padding: 30px;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+/*# sourceMappingURL=main.css.map */

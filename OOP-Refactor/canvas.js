@@ -34,3 +34,5 @@ class BallCanvas {
         this.ballArr = this.createBallArr(ballAmount);
     }
 }
+const canvas1 = new BallCanvas('canvasele', window.innerWidth, window.innerHeight, '2d', 50);
+console.log(canvas1);

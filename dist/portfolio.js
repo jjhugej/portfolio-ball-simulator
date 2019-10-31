@@ -3,8 +3,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     let canvas = document.getElementById('canvasele');
     let context = canvas.getContext('2d');
-    let canvasWidth = (canvas.width = window.innerWidth);
-    let canvasHeight = (canvas.height = window.innerHeight);
+    let canvasWidth = (canvas.width = window.innerWidth - 1);
+    let canvasHeight = (canvas.height = window.innerHeight - 1);
+    let buttonelement = document.getElementById('startBtn');
+    let button = buttonelement.getBoundingClientRect();
     //make simulator adjustments below
     let fps = 60;
     let drawInterval = 1000 / fps;
@@ -12,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const xVelMin = 1;
     const yVelMax = 4;
     const yVelMin = 1;
-    const ballSizeMax = 50;
+    const ballSizeMax = 30;
     const ballSizeMin = 10;
     const ballAmount = 20;
 
@@ -25,8 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     function canvasChecker() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth - 1;
+        canvas.height = window.innerHeight - 1;
     }
 
     function logMovement(event) {
@@ -47,7 +49,6 @@ document.addEventListener('DOMContentLoaded', function() {
     while (ballArr.length < ballAmount) {
         ballArr.push(makeBall());
     }
-
     function makeBall() {
         //creates and returns a random ball object (initialized with random variables).
         let myBall = {
@@ -63,6 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ballYVel: Math.floor(Math.random() * Math.floor(yVelMax - yVelMin) + yVelMin),
             ballSize: Math.floor(Math.random() * Math.floor(ballSizeMax - ballSizeMin) + ballSizeMin),
             mouseCollision: false,
+            buttonCollision: false,
             ballCollisionArray: [],
         };
         return myBall;
@@ -105,6 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         ballBXInitialVel = ballArr[i].ballXVel;
                         ballBYInitialVel = ballArr[i].ballYVel;
 
+                        //formula for elastic collision pulled from https://www.khanacademy.org/science/physics/linear-momentum/elastic-and-inelastic-collisions/a/what-are-elastic-and-inelastic-collisions
                         ballObject.ballXVel =
                             ((ballObject.ballSize - ballArr[i].ballSize) /
                                 (ballObject.ballSize + ballArr[i].ballSize)) *
@@ -173,6 +176,23 @@ document.addEventListener('DOMContentLoaded', function() {
             ballObject.ballX = canvas.width - ballObject.ballSize - 1;
         }
     }
+    function buttonCollision(ballObject) {
+        if (
+            ballObject.ballX + ballObject.ballSize >= button.left &&
+            ballObject.ballX - ballObject.ballSize <= button.right &&
+            ballObject.ballY + ballObject.ballSize >= button.top - (1 / 2) * button.height - 10 &&
+            ballObject.ballY - ballObject.ballSize <= button.bottom - (1 / 2) * button.height - 10
+        ) {
+            if (ballObject.buttonCollision == false) {
+                ballObject.ballXVel = -ballObject.ballXVel;
+                ballObject.ballYVel = -ballObject.ballYVel;
+                ballObject.buttonCollision = true;
+            }
+        } else {
+            ballObject.buttonCollision = false;
+        }
+    }
+    console.log(button);
 
     function drawBall(ballObject) {
         context.beginPath();
@@ -182,6 +202,7 @@ document.addEventListener('DOMContentLoaded', function() {
         screenCollision(ballObject);
         mouseCollision(ballObject);
         ballCollision(ballObject);
+        buttonCollision(ballObject);
         ballObject.ballX += ballObject.ballXVel;
         ballObject.ballY += ballObject.ballYVel;
     }

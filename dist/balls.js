@@ -17,9 +17,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let canvas = document.getElementById('canvasele');
     let context = canvas.getContext('2d');
-    let navB = document.getElementById('navwrapper').getBoundingClientRect();
-    let navHeight = navB.height;
-    let extraPad = 20;
+    //let navB = document.getElementById('navwrapper').getBoundingClientRect();
+    //let navHeight = navB.height;
+    //let extraPad = 20;
     let canvasWidth = (canvas.width = window.innerWidth);
     let canvasHeight = (canvas.height = window.innerHeight);
     const canvasMin = 0;

@@ -1,4 +1,5 @@
 function foobar(ballX, ballY, ballSize, buttonTop, buttonRight, buttonBottom, buttonLeft) {
+    //left wall
     if (
         ballY + ballSize >= buttonTop &&
         ballY - ballSize <= buttonBottom &&
@@ -7,6 +8,21 @@ function foobar(ballX, ballY, ballSize, buttonTop, buttonRight, buttonBottom, bu
     ) {
         ballXVel = -ballXVel;
         buttonCollision = true;
+        console.log(
+            'left wall collision',
+            'ballX:',
+            ballX,
+            'ballY:',
+            ballY,
+            'ballSize:',
+            ballSize,
+            'buttonLeft:',
+            buttonLeft,
+            'buttonTop:',
+            buttonTop,
+            'buttonBottom:',
+            buttonBottom
+        );
     }
 
     //check top
@@ -18,6 +34,21 @@ function foobar(ballX, ballY, ballSize, buttonTop, buttonRight, buttonBottom, bu
     ) {
         ballYVel = -ballYVel;
         buttonCollision = true;
+        console.log(
+            'top wall collision',
+            'ballX:',
+            ballX,
+            'ballY:',
+            ballY,
+            'ballSize:',
+            ballSize,
+            'buttonLeft:',
+            buttonLeft,
+            'buttonTop:',
+            buttonTop,
+            'buttonBottom:',
+            buttonBottom
+        );
     }
 
     //check right wall
@@ -29,6 +60,21 @@ function foobar(ballX, ballY, ballSize, buttonTop, buttonRight, buttonBottom, bu
     ) {
         ballXVel = -ballXVel;
         buttonCollision = true;
+        console.log(
+            'Right wall collision',
+            'ballX:',
+            ballX,
+            'ballY:',
+            ballY,
+            'ballSize:',
+            ballSize,
+            'buttonLeft:',
+            buttonLeft,
+            'buttonTop:',
+            buttonTop,
+            'buttonBottom:',
+            buttonBottom
+        );
     }
 
     //check bottom
@@ -40,5 +86,20 @@ function foobar(ballX, ballY, ballSize, buttonTop, buttonRight, buttonBottom, bu
     ) {
         ballYVel = -ballYVel;
         buttonCollision = true;
+        console.log(
+            'bottom wall collision',
+            'ballX:',
+            ballX,
+            'ballY:',
+            ballY,
+            'ballSize:',
+            ballSize,
+            'buttonLeft:',
+            buttonLeft,
+            'buttonTop:',
+            buttonTop,
+            'buttonBottom:',
+            buttonBottom
+        );
     }
 }

@@ -2,12 +2,13 @@
 @import './variables';
 @import './mixins';
 @import './functions';
+
 #startBtn {
     position: absolute;
-    top: 75vh;
+    margin: 0 auto;
+    top: 65vh;
     padding: 30px;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    left: 40vw;
     color: white;
     background-color: rgba(0, 0, 0, 0.1);
     &:hover {

@@ -8,11 +8,10 @@
 
 #startBtn {
   position: absolute;
-  top: 75vh;
+  margin: 0 auto;
+  top: 65vh;
   padding: 30px;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  left: 40vw;
   color: white;
   background-color: rgba(0, 0, 0, 0.1);
 }
@@ -20,5 +19,9 @@
 #startBtn:hover {
   background-color: rgba(100, 100, 100, 0.8);
   color: white;
+}
+
+#navWrapper {
+  width: 80%;
 }
 /*# sourceMappingURL=main.css.map */

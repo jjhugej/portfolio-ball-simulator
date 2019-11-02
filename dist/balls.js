@@ -17,14 +17,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let canvas = document.getElementById('canvasele');
     let context = canvas.getContext('2d');
-    //let navB = document.getElementById('navwrapper').getBoundingClientRect();
-    //let navHeight = navB.height;
-    //let extraPad = 20;
     let canvasWidth = (canvas.width = window.innerWidth);
     let canvasHeight = (canvas.height = window.innerHeight);
     const canvasMin = 0;
     const ballArr = [];
-    let scrollPos = 0;
     let currentMousePos = {
         mouseX: 0,
         mouseY: 0,
@@ -256,17 +252,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 ballObject.buttonCollision = true;
                 console.log('Right Wall Collison', ballObject);
             }
-            /*
+
             //check bottom
             else if (
                 ballObject.ballX + ballObject.ballSize >= buttonLeft &&
                 ballObject.ballX - ballObject.ballSize <= buttonRight &&
-                ballObject.ballY - ballObject.ballSize <= buttonBottom
+                ballObject.ballY - ballObject.ballSize <= buttonBottom &&
+                ballObject.ballY - ballObject.ballSize >= buttonBottom - 2
             ) {
                 ballObject.ballYVel = -ballObject.ballYVel;
                 ballObject.buttonCollision = true;
                 console.log('Bottom Wall Collison', ballObject);
-            }*/
+            }
         } else {
             ballObject.buttonCollision = false;
         }

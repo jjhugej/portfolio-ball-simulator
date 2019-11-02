@@ -4,12 +4,13 @@ document.addEventListener('DOMContentLoaded', function() {
     //Simulator options below - some amounts are changed based on screen width see below.
     //If you want to set the settings mark mediaQueryOveride = true;
     const mediaQueryOveride = true;
+    const testBallBoolean = true;
     let fps = 60;
     let drawInterval = 1000 / fps;
-    let xVelMax = 4;
-    const xVelMin = 3;
-    let yVelMax = 4;
-    const yVelMin = 3;
+    let xVelMax = 3;
+    const xVelMin = 1;
+    let yVelMax = 3;
+    const yVelMin = 1;
     let ballSizeMax = 20;
     let ballSizeMin = 20;
     let ballAmount = 1;
@@ -218,11 +219,12 @@ document.addEventListener('DOMContentLoaded', function() {
         if (ballObject.buttonCollision == false) {
             //check wall collisions
             //check left wall
+            // MAKE VARIABLES FOR BALLOBJECT.BALLY + BALLSIZE = BOTOFBALL- STUPID
             if (
                 ballObject.ballY + ballObject.ballSize >= buttonTop &&
                 ballObject.ballY - ballObject.ballSize <= buttonBottom &&
                 ballObject.ballX + ballObject.ballSize >= buttonLeft &&
-                ballObject.ballX + ballObject.ballSize <= buttonLeft + 2
+                ballObject.ballX + ballObject.ballSize < buttonRight
             ) {
                 ballObject.ballXVel = -ballObject.ballXVel;
                 ballObject.buttonCollision = true;
@@ -234,7 +236,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 ballObject.ballX + ballObject.ballSize >= buttonLeft &&
                 ballObject.ballX - ballObject.ballSize <= buttonRight &&
                 ballObject.ballY + ballObject.ballSize >= buttonTop &&
-                ballObject.ballY + ballObject.ballSize <= buttonTop + 2
+                ballObject.ballY + ballObject.ballSize < buttonBottom
             ) {
                 ballObject.ballYVel = -ballObject.ballYVel;
                 ballObject.buttonCollision = true;
@@ -246,7 +248,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 ballObject.ballY + ballObject.ballSize >= buttonTop &&
                 ballObject.ballY - ballObject.ballSize <= buttonBottom &&
                 ballObject.ballX - ballObject.ballSize <= buttonRight &&
-                ballObject.ballX - ballObject.ballSize >= buttonRight - 2
+                ballObject.ballX - ballObject.ballSize > buttonLeft
             ) {
                 ballObject.ballXVel = -ballObject.ballXVel;
                 ballObject.buttonCollision = true;
@@ -258,7 +260,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 ballObject.ballX + ballObject.ballSize >= buttonLeft &&
                 ballObject.ballX - ballObject.ballSize <= buttonRight &&
                 ballObject.ballY - ballObject.ballSize <= buttonBottom &&
-                ballObject.ballY - ballObject.ballSize >= buttonBottom - 2
+                ballObject.ballY - ballObject.ballSize > buttonTop
             ) {
                 ballObject.ballYVel = -ballObject.ballYVel;
                 ballObject.buttonCollision = true;
@@ -305,7 +307,16 @@ document.addEventListener('DOMContentLoaded', function() {
             ballObject.buttonCollision = false;
         }*/
     }
-
+    function drawTestBall() {
+        context.beginPath();
+        context.fillStyle = 'white';
+        context.arc(ballObject.ballX, ballObject.ballY, ballObject.ballSize, 0, 2 * Math.PI);
+        context.fill();
+        screenCollision(ballObject);
+        mouseCollision(ballObject);
+        ballCollision(ballObject);
+        buttonCollision(ballObject);
+    }
     function drawBall(ballObject) {
         context.beginPath();
         context.fillStyle = 'white';

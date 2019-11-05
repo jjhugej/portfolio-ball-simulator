@@ -2,17 +2,44 @@
 @import './variables';
 @import './mixins';
 @import './functions';
-
+#navWrapper {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+#navBar {
+    width: 80vw;
+    border-bottom: solid 1px white;
+    background-color: rgba(0, 0, 0, 0.1);
+    position: fixed;
+}
 #startBtn {
     position: absolute;
-    margin: 0 auto;
     top: 65vh;
     padding: 30px;
-    left: 40vw;
-    color: white;
+    color: $text-color;
     background-color: rgba(0, 0, 0, 0.1);
     &:hover {
         background-color: rgba(100, 100, 100, 0.8);
-        color: white;
+        color: $text-color;
     }
+}
+#skillHead {
+    text-align: center;
+    margin: 10px 0 20px 0;
+    h1 {
+        font-size: 1.8rem;
+        font-weight: bold;
+        font-style: italic;
+        text-decoration: underline;
+    }
+}
+.skillCard {
+    text-align: center;
+    h1 {
+        overflow-y: hidden;
+    }
+}
+#testing {
+    color: pink;
 }

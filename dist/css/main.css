@@ -6,18 +6,57 @@
   overflow-x: hidden;
 }
 
+#navWrapper {
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#navBar {
+  width: 80vw;
+  border-bottom: solid 1px white;
+  background-color: rgba(0, 0, 0, 0.1);
+  position: fixed;
+}
+
 #startBtn {
   position: absolute;
-  margin: 0 auto;
   top: 65vh;
   padding: 30px;
-  left: 40vw;
-  color: white;
+  color: #fff;
   background-color: rgba(0, 0, 0, 0.1);
 }
 
 #startBtn:hover {
   background-color: rgba(100, 100, 100, 0.8);
-  color: white;
+  color: #fff;
+}
+
+#skillHead {
+  text-align: center;
+  margin: 10px 0 20px 0;
+}
+
+#skillHead h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+.skillCard {
+  text-align: center;
+}
+
+.skillCard h1 {
+  overflow-y: hidden;
+}
+
+#testing {
+  color: pink;
 }
 /*# sourceMappingURL=main.css.map */

@@ -14,12 +14,12 @@
         <link rel="stylesheet" href="./css/main.css" />
     </head>
     <body>
-        <!-- 
-        <div id="navwrapper">
-            <nav id="navB" class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div id="navWrapper">
+            <nav id="navBar" class="navbar navbar-expand-sm navbar-dark">
                 <a class="navbar-brand" href="#">Jonathan Lilly</a>
                 <button
-                    class="navbar-toggler"
+                    id="navBarBtn"
+                    class="navbar-toggler navbar-light"
                     type="button"
                     data-toggle="collapse"
                     data-target="#navbarNavAltMarkup"
@@ -31,18 +31,43 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav ml-auto">
-                        <a class="nav-item nav-link active" href="#">Home</a>
-                        <a class="nav-item nav-link" href="#">Skills</a>
-                        <a class="nav-item nav-link" href="#">Projects</a>
-                        <a class="nav-item nav-link" href="#">Contact</a>
+                        <a class="mx-auto nav-item nav-link active" href="#">Skills</a>
+                        <a class="mx-auto nav-item nav-link" href="#">Projects</a>
+                        <a class="mx-auto nav-item nav-link" href="#">Contact</a>
                     </div>
                 </div>
             </nav>
-        </div>-->
-        <button id="startBtn">Get Started</button>
+        </div>
+        <div id="btnWrapper" class="row d-flex justify-content-center">
+            <button id="startBtn">Get Started</button>
+        </div>
         <canvas id="canvasele"></canvas>
+
+        <section id="skillsSection">
+            <header id="skillHead">
+                <h1>
+                    Here's What I Can Do:
+                </h1>
+            </header>
+            <div class="container">
+                <div class="row">
+                    <div class="skillCard col-md">
+                        <h1>HTML</h1>
+                        <p>I write semantic SEO friendly markup</p>
+                    </div>
+                    <div class="skillCard col-md">
+                        <h1>CSS</h1>
+                        <p>I make my CSS sassy with SCSS, and CSS variables</p>
+                    </div>
+                    <div class="skillCard col-md">
+                        <h1>Javascript</h1>
+                        <p>Who doesn't love vanilla?</p>
+                    </div>
+                </div>
+            </div>
+        </section>
         <div>
-            <p>
+            <p id="testing">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil quod, ad reiciendis alias dicta dolorem
                 ut adipisci repellat nesciunt provident voluptas nam suscipit rem quia, natus placeat magni laudantium
                 minus quas explicabo modi debitis possimus ea saepe. Ducimus fuga soluta numquam non fugit consequatur

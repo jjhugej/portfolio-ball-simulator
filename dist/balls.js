@@ -29,11 +29,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (mediaQueryOveride == false) {
         if (canvas.width <= 430) {
             ballSizeMin = 5;
-            ballSizeMax = 15;
+            ballSizeMax = 20;
             ballAmount = 15;
         } else if (431 >= canvas.width <= 810) {
-            ballSizeMin = 10;
-            ballSizeMax = 35;
+            ballSizeMin = 5;
+            ballSizeMax = 25;
             ballAmount = 15;
         } else if (811 >= canvas.width <= 1100) {
             ballSizeMin = 15;
@@ -220,6 +220,8 @@ document.addEventListener('DOMContentLoaded', function() {
         let topSideOfBall = ballObject.ballY - ballObject.ballSize;
         let rightSideOfBall = ballObject.ballX + ballObject.ballSize;
         let leftSideOfBall = ballObject.ballX - ballObject.ballSize;
+        //let ballYVel = ballObject.ballYVel;
+        //let ballXVel = ballObject.ballYVel;
         if (ballObject.buttonCollision == false) {
             //check wall collisions
             //check left wall
@@ -276,8 +278,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         /* 
-         else {
-            ballObject.buttonCollision = false;
+        
 
         The following uses the same elastic collision equation as above in the ball vs ball collision. 
         Due to the formula requiring a mass and velocity for both entities (because: physics)--
@@ -327,7 +328,7 @@ document.addEventListener('DOMContentLoaded', function() {
         context.fillStyle = 'white';
         context.arc(ballObject.ballX, ballObject.ballY, ballObject.ballSize, 0, 2 * Math.PI);
         context.fill();
-        buttonCollision(ballObject);
+        //buttonCollision(ballObject);
         screenCollision(ballObject);
         mouseCollision(ballObject);
         ballCollision(ballObject);

@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let canvasHeight = (canvas.height = window.innerHeight);
     const canvasMin = 0;
     const ballArr = [];
+    let scrollPos = 0;
     let currentMousePos = {
         mouseX: 0,
         mouseY: 0,
@@ -63,7 +64,19 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
     function logScroll(event) {
+        let startBtn = document.getElementById('startBtn');
+        let navBar = document.getElementById('navBar');
         scrollPos = event.path[1].scrollY;
+        if (scrollPos > 10) {
+            navBar.classList.add('navBorder');
+        } else if (scrollPos <= 10) {
+            navBar.classList.remove('navBorder');
+        }
+        if (scrollPos > 50) {
+            startBtn.classList.add('hideBtn');
+        } else if (scrollPos < 50) {
+            startBtn.classList.remove('hideBtn');
+        }
     }
 
     function drawBackground() {

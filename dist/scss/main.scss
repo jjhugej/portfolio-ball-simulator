@@ -9,9 +9,17 @@
 }
 #navBar {
     width: 80vw;
-    border-bottom: solid 1px white;
     background-color: rgba(0, 0, 0, 0.1);
     position: fixed;
+}
+.navBorder {
+    border-bottom: solid 1px white;
+}
+canvas {
+    display: block;
+    margin: 0;
+    padding: 0;
+    border-bottom: solid 1px white;
 }
 #startBtn {
     position: absolute;
@@ -24,22 +32,37 @@
         color: $text-color;
     }
 }
-#skillHead {
-    text-align: center;
-    margin: 10px 0 20px 0;
-    h1 {
-        font-size: 1.8rem;
-        font-weight: bold;
-        font-style: italic;
-        text-decoration: underline;
+.hideBtn {
+    display: none;
+}
+
+#skillSection {
+    background-color: black;
+    color: $text-color;
+    margin: 0;
+    #skillHead {
+        text-align: center;
+        margin: 20px 0 30px 0;
+        h1 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            font-style: italic;
+            text-decoration: underline;
+            overflow-y: hidden;
+        }
+    }
+    .skillCard {
+        text-align: center;
+        margin: 20px;
+        .skillFA {
+            font-size: $skillFA;
+        }
+        h1 {
+            overflow-y: hidden;
+        }
     }
 }
-.skillCard {
-    text-align: center;
-    h1 {
-        overflow-y: hidden;
-    }
-}
+
 #testing {
     color: pink;
 }

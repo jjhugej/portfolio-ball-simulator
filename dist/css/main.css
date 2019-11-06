@@ -141,8 +141,14 @@ canvas {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
+#projectSection .projectCard a {
+  color: #fff;
+  text-decoration: none;
+  width: 100%;
+}
+
 #projectSection .projectCard p {
-  bottom: 0;
+  display: inline;
   margin: 0;
   padding: 0;
   font-size: 1.2rem;
@@ -156,11 +162,9 @@ canvas {
   font-size: 1.4rem;
 }
 
-#projectSection .projectCard a {
-  position: absolute;
-  bottom: 0;
-  right: 10%;
-  margin: 0;
+#projectSection .projectCard i {
+  display: inline;
+  margin-left: 10px;
   padding: 0;
   font-size: 1.6rem;
   font-weight: 300;
@@ -168,8 +172,14 @@ canvas {
   transition: 0.5s;
 }
 
-#projectSection .projectCard a:hover {
+#projectSection .projectCard i:hover {
   font-size: 1.8rem;
+}
+
+#projectOne {
+  background-image: url("../images/projectOneScaled.png") !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
 }
 
 #contactSection {
@@ -186,6 +196,84 @@ canvas {
 #contactSection .sectionHead h1 {
   font-weight: 900;
   overflow-y: hidden;
+}
+
+#contactSection #contactFormWrapper {
+  border: solid 1px white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 80vw;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+#contactSection #contactFormWrapper #contactForm {
+  margin: 0 auto;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  display: block;
+  color: white;
+  text-align: center;
+}
+
+#contactSection #contactFormWrapper #contactForm label {
+  margin: 0 auto 5px;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#contactSection #contactFormWrapper #contactForm input {
+  border: solid 1px white;
+  margin: 0 auto;
+  margin-bottom: 40px;
+  padding: 15px;
+  font-size: 1.6rem;
+  font-weight: 400;
+  display: block;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+#contactSection #contactFormWrapper #contactForm textarea {
+  margin: 0 auto;
+  font-size: 1.6rem;
+  font-weight: 400;
+  display: block;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  margin-bottom: 10px;
+}
+
+#contactSection #contactFormWrapper #contactForm select {
+  margin: 0 auto 40px;
+  font-size: 1.6rem;
+  padding: 13px;
+}
+
+#contactSection #contactFormWrapper #contactForm #whoIsItLabel {
+  margin: 0 auto 5px;
+  font-size: 1.6rem;
+  display: block;
+}
+
+#contactSection #contactFormWrapper #contactForm #formSubmitBtn {
+  border-radius: 10%;
+  border: solid 1px white;
+  font-size: 1.6rem;
+  font-weight: 500;
+  padding: 10px 50px;
+  margin: 20px auto;
+  color: #fff;
+  background-color: black;
+}
+
+#contactSection #contactFormWrapper #contactForm #formSubmitBtn:hover {
+  background-color: black;
 }
 
 #contactSection #contactCard {

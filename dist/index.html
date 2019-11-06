@@ -76,30 +76,38 @@
             </header>
             <div class="container">
                 <div class="row">
-                    <div class="projectCard col-md">
+                    <div id="projectOne" class="projectCard col-md">
                         <div class="projectDescripOverlay">
-                            <p>Description Text</p>
-                            <a> <i class="fab fa-github"></i></a>
+                            <a href="https://github.com/jjhugej/portfolio-ball-simulator">
+                                <p>Portfolio</p>
+                                <i class="fab fa-github"></i>
+                            </a>
                         </div>
                     </div>
                     <div class="projectCard col-md">
                         <div class="projectDescripOverlay">
-                            <p>Description Text</p>
-                            <a> <i class="fab fa-github"></i></a>
+                            <a>
+                                <p>Description Text</p>
+                                <i class="fab fa-github"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="projectCard col-md">
                         <div class="projectDescripOverlay">
-                            <p>Description Text</p>
-                            <a> <i class="fab fa-github"></i></a>
+                            <a>
+                                <p>Description Text</p>
+                                <i class="fab fa-github"></i>
+                            </a>
                         </div>
                     </div>
                     <div class="projectCard col-md">
                         <div class="projectDescripOverlay">
-                            <p>Description Text</p>
-                            <a> <i class="fab fa-github"></i></a>
+                            <a>
+                                <p>Description Text</p>
+                                <i class="fab fa-github"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -109,6 +117,26 @@
             <header class="sectionHead">
                 <h1>Get In Touch:</h1>
             </header>
+            <div id="contactFormWrapper">
+                <form id="contactForm" action="#contactSection" target="_self">
+                    <label for="name">What's your name?</label>
+                    <input type="text" name="name" placeholder="Lincoln Logs" />
+                    <label for="company">Which company are you with?</label>
+                    <input type="text" name="company" placeholder="Enron" />
+                    <label for="email">What's your email?</label>
+                    <input type="text" name="email" placeholder="yahoo@gmail.com" />
+                    <label id="whoIsItLabel" for="whoIsIt" aria-required="true">I am a </label>
+                    <select name="whoIsIt">
+                        <option value="default">Select One</option>
+                        <option value="recruiter">Recruiter</option>
+                        <option value="developer">Developer</option>
+                        <option value="manager">Hiring Manager</option>
+                        <option value="justLooking">Just Looking</option>
+                    </select>
+                    <textarea name="sendMessage" rows="10" cols="30"> Say Hi! </textarea>
+                    <input id="formSubmitBtn" type="submit" value="Submit" />
+                </form>
+            </div>
             <div id="contactCard">
                 <p>JonLillyWebDev@gmail.com</p>
                 <p>

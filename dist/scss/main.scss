@@ -9,17 +9,24 @@
 }
 #navBar {
     width: 80vw;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0);
     position: fixed;
+    z-index: 8;
+    transition: 3s;
+    a {
+        font-weight: 500;
+    }
 }
 .navBorder {
+    background-color: rgba(0, 0, 0, 0.7) !important;
     border-bottom: solid 1px white;
+    transition: 3s;
 }
 canvas {
     display: block;
     margin: 0;
     padding: 0;
-    border-bottom: solid 1px white;
+    border-bottom: solid 2px white;
 }
 #startBtn {
     position: absolute;
@@ -28,26 +35,26 @@ canvas {
     color: $text-color;
     background-color: rgba(0, 0, 0, 0.1);
     &:hover {
-        background-color: rgba(100, 100, 100, 0.8);
+        background-color: rgba(82, 81, 81, 0.4);
         color: $text-color;
     }
 }
 .hideBtn {
     display: none;
+    transition: 2s;
 }
 
 #skillSection {
     background-color: black;
+    border-bottom: solid 3px white;
     color: $text-color;
     margin: 0;
-    #skillHead {
+    .sectionHead {
         text-align: center;
         margin: 20px 0 30px 0;
         h1 {
-            font-size: 1.8rem;
-            font-weight: bold;
-            font-style: italic;
-            text-decoration: underline;
+            font-size: 2rem;
+            font-weight: 900;
             overflow-y: hidden;
         }
     }
@@ -58,11 +65,105 @@ canvas {
             font-size: $skillFA;
         }
         h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
             overflow-y: hidden;
+            color: rgba(255, 255, 255, 0.95);
+        }
+        p {
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.8);
         }
     }
 }
-
-#testing {
-    color: pink;
+#projectSection {
+    background-color: black;
+    padding: 10px 0 30px 0;
+    border-bottom: solid 3px white;
+    .sectionHead {
+        color: white;
+        text-align: center;
+        margin: 20px 0 30px 0;
+        h1 {
+            font-weight: 900;
+            overflow-y: hidden;
+        }
+    }
+    .projectCard {
+        background: white;
+        height: 35vh;
+        border: solid 1px white;
+        margin: 10px 20px;
+        color: white;
+        .projectDescripOverlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        p {
+            bottom: 0;
+            margin: 0;
+            padding: 0;
+            font-size: 1.2rem;
+            font-weight: 300;
+            line-height: 3.2rem;
+            transition: 0.5s;
+            &:hover {
+                font-size: 1.4rem;
+            }
+        }
+        a {
+            position: absolute;
+            bottom: 0;
+            right: 10%;
+            margin: 0;
+            padding: 0;
+            font-size: 1.6rem;
+            font-weight: 300;
+            transition: 0.5s;
+            &:hover {
+                font-size: 1.8rem;
+            }
+        }
+    }
+}
+#contactSection {
+    background-color: black;
+    padding: 20px;
+    .sectionHead {
+        color: white;
+        text-align: center;
+        margin: 20px 0 30px 0;
+        h1 {
+            font-weight: 900;
+            overflow-y: hidden;
+        }
+    }
+    #contactCard {
+        text-align: center;
+        color: white;
+        font-weight: 500;
+        p {
+            line-height: 3rem;
+            font-size: 1.2rem;
+        }
+        a {
+            color: white;
+            i:hover {
+                font-size: 1.4rem;
+            }
+        }
+    }
+}
+#spacerDiv {
+    position: absolute;
+    left: 0;
+    height: 20vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(20, 20, 20);
 }

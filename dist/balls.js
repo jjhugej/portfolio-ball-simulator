@@ -18,8 +18,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let canvas = document.getElementById('canvasele');
     let context = canvas.getContext('2d');
+    let canvasReducer = 35;
     let canvasWidth = (canvas.width = window.innerWidth);
-    let canvasHeight = (canvas.height = window.innerHeight);
+    let canvasHeight = (canvas.height = window.innerHeight - canvasReducer);
     const canvasMin = 0;
     const ballArr = [];
     let scrollPos = 0;
@@ -55,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function canvasChecker() {
         canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        canvas.height = window.innerHeight - canvasReducer;
     }
     function logMovement(event) {
         currentMousePos = {
@@ -72,9 +73,9 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (scrollPos <= 10) {
             navBar.classList.remove('navBorder');
         }
-        if (scrollPos > 50) {
+        if (scrollPos > 300) {
             startBtn.classList.add('hideBtn');
-        } else if (scrollPos < 50) {
+        } else if (scrollPos < 300) {
             startBtn.classList.remove('hideBtn');
         }
     }

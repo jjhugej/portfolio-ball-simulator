@@ -18,19 +18,29 @@
 
 #navBar {
   width: 80vw;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0);
   position: fixed;
+  z-index: 8;
+  -webkit-transition: 3s;
+  transition: 3s;
+}
+
+#navBar a {
+  font-weight: 500;
 }
 
 .navBorder {
+  background-color: rgba(0, 0, 0, 0.7) !important;
   border-bottom: solid 1px white;
+  -webkit-transition: 3s;
+  transition: 3s;
 }
 
 canvas {
   display: block;
   margin: 0;
   padding: 0;
-  border-bottom: solid 1px white;
+  border-bottom: solid 2px white;
 }
 
 #startBtn {
@@ -42,30 +52,31 @@ canvas {
 }
 
 #startBtn:hover {
-  background-color: rgba(100, 100, 100, 0.8);
+  background-color: rgba(82, 81, 81, 0.4);
   color: #fff;
 }
 
 .hideBtn {
   display: none;
+  -webkit-transition: 2s;
+  transition: 2s;
 }
 
 #skillSection {
   background-color: black;
+  border-bottom: solid 3px white;
   color: #fff;
   margin: 0;
 }
 
-#skillSection #skillHead {
+#skillSection .sectionHead {
   text-align: center;
   margin: 20px 0 30px 0;
 }
 
-#skillSection #skillHead h1 {
-  font-size: 1.8rem;
-  font-weight: bold;
-  font-style: italic;
-  text-decoration: underline;
+#skillSection .sectionHead h1 {
+  font-size: 2rem;
+  font-weight: 900;
   overflow-y: hidden;
 }
 
@@ -79,10 +90,124 @@ canvas {
 }
 
 #skillSection .skillCard h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  overflow-y: hidden;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+#skillSection .skillCard p {
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#projectSection {
+  background-color: black;
+  padding: 10px 0 30px 0;
+  border-bottom: solid 3px white;
+}
+
+#projectSection .sectionHead {
+  color: white;
+  text-align: center;
+  margin: 20px 0 30px 0;
+}
+
+#projectSection .sectionHead h1 {
+  font-weight: 900;
   overflow-y: hidden;
 }
 
-#testing {
-  color: pink;
+#projectSection .projectCard {
+  background: white;
+  height: 35vh;
+  border: solid 1px white;
+  margin: 10px 20px;
+  color: white;
+}
+
+#projectSection .projectCard .projectDescripOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+#projectSection .projectCard p {
+  bottom: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 3.2rem;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#projectSection .projectCard p:hover {
+  font-size: 1.4rem;
+}
+
+#projectSection .projectCard a {
+  position: absolute;
+  bottom: 0;
+  right: 10%;
+  margin: 0;
+  padding: 0;
+  font-size: 1.6rem;
+  font-weight: 300;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#projectSection .projectCard a:hover {
+  font-size: 1.8rem;
+}
+
+#contactSection {
+  background-color: black;
+  padding: 20px;
+}
+
+#contactSection .sectionHead {
+  color: white;
+  text-align: center;
+  margin: 20px 0 30px 0;
+}
+
+#contactSection .sectionHead h1 {
+  font-weight: 900;
+  overflow-y: hidden;
+}
+
+#contactSection #contactCard {
+  text-align: center;
+  color: white;
+  font-weight: 500;
+}
+
+#contactSection #contactCard p {
+  line-height: 3rem;
+  font-size: 1.2rem;
+}
+
+#contactSection #contactCard a {
+  color: white;
+}
+
+#contactSection #contactCard a i:hover {
+  font-size: 1.4rem;
+}
+
+#spacerDiv {
+  position: absolute;
+  left: 0;
+  height: 20vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  background-color: #141414;
 }
 /*# sourceMappingURL=main.css.map */

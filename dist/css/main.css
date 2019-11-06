@@ -4,6 +4,7 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 #navWrapper {
@@ -30,7 +31,7 @@
 }
 
 .navBorder {
-  background-color: rgba(0, 0, 0, 0.7) !important;
+  background-color: rgba(0, 0, 0, 0.4) !important;
   border-bottom: solid 1px white;
   -webkit-transition: 3s;
   transition: 3s;
@@ -43,16 +44,21 @@ canvas {
   border-bottom: solid 2px white;
 }
 
+#btnWrapper a {
+  color: #fff;
+}
+
 #startBtn {
   position: absolute;
   top: 65vh;
   padding: 30px;
-  color: #fff;
   background-color: rgba(0, 0, 0, 0.1);
+  border: solid 1px white;
+  text-decoration: none;
 }
 
 #startBtn:hover {
-  background-color: rgba(82, 81, 81, 0.4);
+  background-color: rgba(46, 46, 46, 0.4);
   color: #fff;
 }
 

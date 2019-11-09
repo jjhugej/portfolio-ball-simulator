@@ -20,8 +20,10 @@
 #navBar {
   width: 80vw;
   background-color: rgba(0, 0, 0, 0);
+  color: #fff;
+  text-shadow: 2px 2px black !important;
   position: fixed;
-  z-index: 8;
+  z-index: 8 !important;
   -webkit-transition: 3s;
   transition: 3s;
 }
@@ -46,6 +48,7 @@ canvas {
 
 #btnWrapper a {
   color: #fff;
+  text-shadow: 2px 2px black !important;
 }
 
 #startBtn {
@@ -54,6 +57,8 @@ canvas {
   padding: 30px;
   background-color: rgba(0, 0, 0, 0.1);
   border: solid 1px white;
+  -webkit-box-shadow: 2px 2px black;
+          box-shadow: 2px 2px black;
   text-decoration: none;
 }
 
@@ -72,12 +77,11 @@ canvas {
   background-color: black;
   border-bottom: solid 3px white;
   color: #fff;
-  margin: 0;
 }
 
 #skillSection .sectionHead {
   text-align: center;
-  margin: 20px 0 30px 0;
+  margin: 60px 0 30px 0;
 }
 
 #skillSection .sectionHead h1 {
@@ -117,7 +121,7 @@ canvas {
 #projectSection .sectionHead {
   color: white;
   text-align: center;
-  margin: 20px 0 30px 0;
+  margin: 60px 0 30px 0;
 }
 
 #projectSection .sectionHead h1 {
@@ -190,7 +194,7 @@ canvas {
 #contactSection .sectionHead {
   color: white;
   text-align: center;
-  margin: 20px 0 30px 0;
+  margin: 60px 0 30px 0;
 }
 
 #contactSection .sectionHead h1 {

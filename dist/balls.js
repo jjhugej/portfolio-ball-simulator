@@ -1,16 +1,16 @@
 document.addEventListener('DOMContentLoaded', function () {
     //Simulator options below - some amounts are changed based on screen width see below.
     //If you want to set the settings mark mediaQueryOveride = true;
-    const mediaQueryOveride = false;
+    const mediaQueryOveride = true;
     let fps = 60;
     let drawInterval = 1000 / fps;
     let xVelMax = 4;
     const xVelMin = 2;
     let yVelMax = 4;
     const yVelMin = 2;
-    let ballSizeMax = 20;
-    let ballSizeMin = 20;
-    let ballAmount = 1;
+    let ballSizeMax = 22;
+    let ballSizeMin = 5;
+    let ballAmount = 15;
     //End simulator options
 
     let canvas = document.getElementById('canvasele');
